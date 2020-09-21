@@ -5,11 +5,13 @@ import com.tung.model.Customer;
 import java.util.List;
 
 public interface CustomerService {
-    List<Customer> findAll();
+    Iterable<Customer> findAll();
 
-    Customer findById(Long id);
+    List<Customer> findAllByAddress(String address);
 
     void save(Customer customer);
 
-    void remove(Long id);
+    public void delete(Customer customer);
+
+
 }

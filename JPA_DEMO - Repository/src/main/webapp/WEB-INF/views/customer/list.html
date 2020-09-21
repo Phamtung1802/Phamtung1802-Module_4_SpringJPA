@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css}">
+    <title>Title</title>
+</head>
+<body>
+<main >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">&nbsp;</div>
+            <div class="col-lg-8 text-center">
+                <a href="/create-customer"><button class="btn-primary">Create New Customer</button></a>
+                <h1>Customers</h1>
+                <table border="1" class="table table-responsive text-justify">
+                    <tr>
+                        <th>First name</th>
+                        <th>Address</th>
+                        <th>Province</th>
+                    </tr>
+                    <th:block th:each="customer : ${customers}">
+                        <tr>
+                            <td th:text="${customer.fullName}"></td>
+                            <td th:text="${customer.address}"></td>
+                            <td th:text="${customer.province.name}"></td>
+                        </tr>
+                    </th:block>
+                </table>
+            </div>
+            <div class="col-lg-2">&nbsp;</div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

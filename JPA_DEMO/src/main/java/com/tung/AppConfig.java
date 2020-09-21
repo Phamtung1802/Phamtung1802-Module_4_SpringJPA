@@ -1,9 +1,8 @@
 package com.tung;
 
 import com.tung.repository.CustomerRepository;
-import com.tung.repository.CustomerRepositoryImpl;
 import com.tung.service.CustomerService;
-import com.tung.service.CustomerServiecImpl;
+import com.tung.service.CustomerServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -11,6 +10,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -34,6 +34,7 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
+@EnableJpaRepositories("com.tung.repository")
 @ComponentScan("com.tung")
 public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
@@ -44,14 +45,14 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         this.applicationContext = applicationContext;
     }
 
-    @Bean
-    public CustomerRepository customerRepository(){
-        return new CustomerRepositoryImpl();
-    }
+//    @Bean
+//    public CustomerRepository customerRepository(){
+//        return new CustomerRepositoryImpl();
+//    }
 
     @Bean
     public CustomerService customerService(){
-        return new CustomerServiecImpl();
+        return new CustomerServiceImpl();
     }
 
 

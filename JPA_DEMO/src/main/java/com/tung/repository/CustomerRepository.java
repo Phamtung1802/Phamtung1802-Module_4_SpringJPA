@@ -1,6 +1,10 @@
 package com.tung.repository;
 
 import com.tung.model.Customer;
+import org.springframework.data.repository.CrudRepository;
 
-public interface CustomerRepository extends Repository<Customer> {
+import java.util.List;
+
+public interface CustomerRepository extends CrudRepository<Customer, String> {
+    List<Customer> findAllByAddress(String address);
 }
